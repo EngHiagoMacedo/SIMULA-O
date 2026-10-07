@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#093665">
+  <meta name="description" content="Sua conta de energia, 30% mais leve. Simule com a Sistec Soluções e descubra sua economia mensal e anual em segundos.">
+  <meta property="og:title" content="Sistec Soluções — Sua conta, 30% mais leve">
+  <meta property="og:description" content="Digite o valor da sua conta de energia e descubra quanto você pode economizar com 30% de desconto.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <title>Sistec Soluções | Simulador de economia</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="assets/vendor/pdf-lib.min.js" defer></script>
+  <script src="app.bundle.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#valor-conta">Ir para o simulador</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#inicio" class="brand" aria-label="Sistec Soluções — início">
+        <img src="assets/logo-sistec-solucoes.png" alt="Sistec Soluções" width="252" height="84" fetchpriority="high">
+      </a>
+      <nav aria-label="Navegação principal">
+        <a href="#como-funciona" class="nav-link">Como funciona</a>
+        <a href="#economia-anual" class="nav-link">Sua economia</a>
+        <a href="#simulador" class="nav-button">Simular agora <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> ENERGIA QUE RENDE MAIS</p>
+        <h1 id="hero-title">Sua conta,<br><span>30% mais leve.</span></h1>
+        <p class="hero-description">Menos na conta de energia.<br>Mais para os seus planos.</p>
+        <p class="hero-detail">Descubra quanto você pode economizar com a <strong>Sistec Soluções</strong>. É só informar o valor que você paga hoje.</p>
+        <a class="hero-link" href="#simulador">Calcule sua economia <span aria-hidden="true">↗</span></a>
+
+        <div class="brand-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="saving-ticket">
+            <div class="ticket-top"><span>SISTEC SOLUÇÕES</span><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 10-12h-7z"/></svg></div>
+            <span class="ticket-label">O desconto é seu.</span>
+            <span class="ticket-value">30<span>%</span></span>
+            <div class="ticket-bottom"><span>Mais possibilidades todo mês</span><svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></div>
+          </div>
+          <div class="mini-sun">✳</div>
+          <div class="mini-note"><span class="note-icon">↘</span><span>Uma conta menor.<br><strong>Um alívio maior.</strong></span></div>
+        </div>
+      </div>
+
+      <div class="calculator" id="simulador">
+        <div class="calculator-heading">
+          <div><p class="eyebrow small">SIMPLES. RÁPIDO. DO SEU JEITO.</p><h2>Quanto você paga hoje?</h2></div>
+          <span class="discount-tag">−30%</span>
+        </div>
+        <form id="calculator-form" novalidate>
+          <label for="valor-conta">Valor mensal da sua conta de energia</label>
+          <div class="money-field" id="money-field"><span aria-hidden="true">R$</span><input id="valor-conta" name="valor-conta" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="500,00" maxlength="20" aria-describedby="input-hint input-error" required></div>
+          <p class="input-hint" id="input-hint">Digite o valor ou escolha um exemplo:</p>
+          <div class="example-values" aria-label="Valores de exemplo">
+            <button type="button" data-amount="20000" aria-pressed="false">R$ 200</button>
+            <button type="button" data-amount="50000" aria-pressed="true">R$ 500</button>
+            <button type="button" data-amount="100000" aria-pressed="false">R$ 1.000</button>
+            <button type="button" data-amount="200000" aria-pressed="false">R$ 2.000</button>
+          </div>
+          <p id="input-error" class="input-error" hidden></p>
+          <button class="calculate-button" type="submit">Calcular minha economia <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </form>
+
+        <div class="result-wrap" id="result-wrap">
+          <p class="result-caption" id="result-caption">Exemplo com uma conta de R$ 500,00</p>
+          <div class="main-result">
+            <div class="main-result-top"><span>Com a Sistec Soluções</span><span class="result-check" aria-hidden="true">✓</span></div>
+            <div class="new-bill"><span id="new-bill">R$ 350,00</span><span class="per-month">/mês</span></div>
+            <p>30% de desconto no valor informado</p>
+          </div>
+          <div class="savings-grid">
+            <div><span class="savings-label">Você economiza por mês</span><strong id="monthly-saving">R$ 150,00</strong></div>
+            <div><span class="savings-label">Em um ano, são</span><strong id="yearly-saving">R$ 1.800,00</strong></div>
+          </div>
+        </div>
+        <p class="calculator-footnote">Simulação de 30% sobre o valor informado. Projeção anual com o mesmo valor por 12 meses.</p>
+        <p id="live-result" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+      </div>
+    </section>
+
+    <section class="how-section" id="como-funciona" aria-labelledby="how-title">
+      <div class="container how-inner">
+        <div class="how-title"><p class="eyebrow small">DO VALOR À ECONOMIA</p><h2 id="how-title">Três passos.<br>Um novo jeito de olhar a conta.</h2></div>
+        <ol class="steps">
+          <li><span class="step-number">01</span><div><h3>Informe sua conta</h3><p>Use o valor mensal que você paga atualmente.</p></div></li>
+          <li><span class="step-number">02</span><div><h3>Veja o desconto</h3><p>O simulador aplica 30% sobre o valor informado.</p></div></li>
+          <li><span class="step-number">03</span><div><h3>Planeje seus próximos meses</h3><p>Compare os valores e acompanhe a economia anual.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="annual-section container" id="economia-anual" aria-labelledby="annual-title">
+      <div class="annual-copy">
+        <p class="eyebrow small">A ECONOMIA SE SOMA</p>
+        <h2 id="annual-title">Parece bom em um mês.<br><span>Imagine em um ano.</span></h2>
+        <p>Uma conta menor abre espaço para novos planos. Veja o que os 30% de desconto representam ao longo de 12 meses.</p>
+        <div class="annual-highlight"><span>Economia estimada em 12 meses</span><strong id="annual-highlight">R$ 1.800,00</strong><span class="annual-context" id="annual-context">Considerando uma conta mensal de R$ 500,00.</span></div>
+        <div class="report-actions">
+          <button id="copy-summary" class="secondary-button" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M15 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3"/></svg>Copiar simulação</button>
+          <button id="download-summary" class="text-button" type="button"><span id="pdf-button-label">Baixar resumo em PDF</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg></button>
+        </div>
+        <p class="action-status" id="action-status" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="insight-panel" id="insight-panel">
+        <div class="panel-header"><div><p class="eyebrow small">SEU DINHEIRO, SEUS PLANOS</p><h3>Uma diferença que dá para ver.</h3></div><span class="panel-icon" aria-hidden="true">↗</span></div>
+        <div class="comparison">
+          <div class="comparison-row"><div class="comparison-meta"><span>Sua conta atual</span><strong id="compare-current">R$ 500,00</strong></div><div class="comparison-track"><div class="bar-current"></div></div></div>
+          <div class="comparison-row"><div class="comparison-meta"><span>Com a Sistec Soluções</span><strong id="compare-new">R$ 350,00</strong></div><div class="comparison-track"><div class="bar-new"></div><span class="bar-label">−30%</span></div></div>
+        </div>
+        <div class="chart-heading"><span>Economia acumulada</span><span class="chart-key"><i aria-hidden="true"></i> 12 meses</span></div>
+        <div class="savings-chart">
+          <svg viewBox="0 0 500 190" role="img" aria-labelledby="chart-title chart-description">
+            <title id="chart-title">Economia acumulada em 12 meses</title>
+            <desc id="chart-description">Com uma economia mensal de R$ 150,00, você acumula R$ 1.800,00 em 12 meses.</desc>
+            <defs><linearGradient id="chart-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0b7ee8" stop-opacity=".25"/><stop offset="100%" stop-color="#0b7ee8" stop-opacity="0"/></linearGradient></defs>
+            <g class="chart-grid"><path d="M10 26H490M10 79H490M10 132H490M10 163H490"/></g>
+            <path id="chart-area" class="chart-area" d="M10 163 50 152 170 117 290 82 410 47 490 24V163H10Z"/>
+            <path id="chart-line" class="chart-line" d="M10 163 50 152 170 117 290 82 410 47 490 24"/>
+            <circle class="chart-end" id="chart-end" cx="490" cy="24" r="5"/>
+            <g class="chart-labels"><text x="50" y="184" text-anchor="middle">1 mês</text><text x="170" y="184" text-anchor="middle">4 meses</text><text x="290" y="184" text-anchor="middle">7 meses</text><text x="410" y="184" text-anchor="middle">10 meses</text><text x="490" y="184" text-anchor="end">12 meses</text></g>
+          </svg>
+        </div>
+        <div class="milestones"><div><span>1 mês</span><strong id="milestone-one">R$ 150,00</strong></div><div><span>6 meses</span><strong id="milestone-six">R$ 900,00</strong></div><div><span>12 meses</span><strong id="milestone-twelve">R$ 1.800,00</strong></div></div>
+        <p class="projection-note">Projeção com o valor da conta mantido durante o período.</p>
+      </div>
+    </section>
+
+    <section class="faq-section container" aria-labelledby="faq-title">
+      <div class="faq-intro"><p class="eyebrow small">TUDO CLARO</p><h2 id="faq-title">Entenda sua simulação.</h2><p>O cálculo é simples. E a economia fica fácil de enxergar.</p></div>
+      <div class="faq-list">
+        <details><summary>Como o desconto é calculado?<span aria-hidden="true">+</span></summary><p>Multiplicamos o valor informado por 30% para encontrar a economia. O valor com desconto corresponde aos 70% restantes. Por exemplo: uma conta de R$ 500,00 gera uma economia mensal de R$ 150,00 e um valor simulado de R$ 350,00.</p></details>
+        <details><summary>Qual valor da conta eu devo informar?<span aria-hidden="true">+</span></summary><p>Informe o valor mensal da conta de energia que você paga atualmente. Se suas contas variam, você pode usar uma média para ter uma referência ou simular cada valor separadamente.</p></details>
+        <details><summary>Como a economia anual é projetada?<span aria-hidden="true">+</span></summary><p>A economia mensal é multiplicada por 12. A projeção considera a mesma conta durante todos os meses. Se o valor da conta mudar, a economia em reais também muda, mantendo o desconto simulado de 30%.</p></details>
+      </div>
+    </section>
+
+    <section class="closing-section container" aria-labelledby="closing-title"><div><p class="eyebrow small">COMECE PELO QUE É SEU</p><h2 id="closing-title">Seu próximo plano pode<br>começar com uma conta menor.</h2></div><a href="#simulador" class="closing-button">Simular minha economia <span aria-hidden="true">↗</span></a></section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><a href="#inicio" class="footer-brand" aria-label="Voltar ao início"><img src="assets/logo-sistec-solucoes.png" width="195" height="65" alt="Sistec Soluções" loading="lazy"></a><p>Mais economia. Mais possibilidades.</p><span>Sistec Soluções · <span id="current-year">2026</span></span></div></footer>
+  <dialog id="copy-dialog" aria-labelledby="copy-dialog-title"><form method="dialog"><h2 id="copy-dialog-title">Sua simulação está pronta</h2><p>Selecione o texto abaixo para copiar.</p><textarea id="summary-text" readonly aria-label="Resumo da simulação"></textarea><div class="dialog-actions"><button type="button" id="select-summary" class="secondary-button">Selecionar texto</button><button class="calculate-button" value="close">Fechar</button></div></form></dialog>
+  <noscript><div class="noscript-note">Ative o JavaScript no navegador para calcular sua economia. O desconto de 30% corresponde a multiplicar a sua conta por 0,70.</div></noscript>
+</body>
+</html>
